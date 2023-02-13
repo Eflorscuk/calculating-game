@@ -24,7 +24,85 @@ int main() {
 }
 
 void start() {
-    // let's implement
+    calculate calc;
+    int difficulty;
+
+    printf("Enter the difficulty level [1, 2, 3 or 4]:\n");
+    scanf("%d", &difficulty);
+    calc.difficulty = difficulty;
+
+    // generates a random number between 0 and 2
+    // 0 == add, 1 == sub, 3 == mul
+    calc.operation = rand() % 3;
+
+    if(calc.difficulty == 1){
+        //easy
+        calc.value1 = rand() % 11; // 0 to 10
+        calc.value2 = rand() % 11;
+    } else if(calc.difficulty == 2){
+        //Medium
+        calc.value1 = rand() % 101; // 0 to 100
+        calc.value2 = rand() % 101;
+    } else if(calc.difficulty == 3){
+        // Hard
+        calc.value1 = rand() % 1001; // 0 to 1000
+        calc.value2 = rand() % 1001;
+    } else if(calc.difficulty == 4){
+        // Very Hard
+        calc.value1 = rand() % 10001; // 0 to 10000
+        calc.value2 = rand() % 10001;
+    } else {
+        // Nightmare
+        calc.value1 = rand() % 100001; // 0 to 100001
+        calc.value2 = rand() % 100001;
+    }
+
+    int res;
+    printf("Enter the result for the following operation: \n");
+
+    //Add
+    if(calc.operation == 0) {
+        printf("%d + %d\n", calc.value1, calc.value2);
+        scanf("%d", &res);
+
+        if(add(res, calc)){
+            points+=1;
+            printf("you have %d point", points);
+        }
+    } // Sub
+    else if(calc.operation == 1) {
+       printf("%d - %d\n", calc.value1, calc.value2);
+        scanf("%d", &res);
+
+        if(sub(res, calc)){
+            points+=1;
+            printf("you have %d point", points);
+        } 
+    } // mult
+    else if(calc.operation == 2){
+        printf("%d * %d\n", calc.value1, calc.value2);
+        scanf("%d", &res);
+
+        if(mul(res, calc)){
+            points+=1;
+            printf("you have %d point", points);
+        }
+    } // Unknown
+    else {
+        printf("Unknown operation!\n", calc.operation);
+    }
+
+    // Play again?
+    printf("Play again?[1 - Yes, 0 - No]\n");
+    int cont;
+    scanf("%d", &cont);
+
+    if(cont) {
+        start();
+    } else {
+        printf("You have finished your game with %d points\n", points);
+        exit();
+    }
 }
 
 void showInfo(calculate calc){
@@ -76,7 +154,7 @@ int sub(int result, calculate calc){
 }
 
 int mul(int result, calculate calc){
-    /int result = calc.value1 * calc.value2;
+    int result = calc.value1 * calc.value2;
     calc.result = result;
     int hit = 0; // 0 == miss, 1 == hit, certo
 
