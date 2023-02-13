@@ -1,6 +1,6 @@
 
 
-##Descrição / Description 
+## Descrição | Description 
 
 Ao jogo inicializar, será solicitado ao usuário a escolha de um nível de
 dificuldade do jogo e, após isso, será gerado e apresentado, de maneira aleatória,
