@@ -28,17 +28,65 @@ void start() {
 }
 
 void showInfo(calculate calc){
-    // let's implement
+    char op[25];
+
+    if(calc.operation == 0) {
+        sprintf(op, "Add");
+    } else if(calc.operation == 1){
+        sprintf(op, "Subtract");
+    } else if(calc.operation == 2){
+        sprintf(op, "Multiply");
+    } else{
+        sprintf(op, "Unknowm operation");
+    }
+    printf("Valor 1: %d \nValor 2: %d \nDifficulty: %d \n Operation: %s", 
+        calc.value1, calc.value2, calc.difficulty, calc.difficulty, op);
 }
 
 int add(int result, calculate calc){
-    // let's implement
+    int result = calc.value1 + calc.value2;
+    calc.result = result;
+    int hit = 0; // 0 == miss, 1 == hit, certo
+
+    if(result == calc.result) {
+        printf("Right answer!\n");
+        hit = 1;
+    } else {
+        printf("Miss!\n");
+    }
+
+    printf("%d + %d = %d\n", calc.value1, calc.value2, calc.result);
+    return hit;
 }
 
 int sub(int result, calculate calc){
-    // let's implement
+    int result = calc.value1 - calc.value2;
+    calc.result = result;
+    int hit = 0; // 0 == miss, 1 == hit, certo
+
+    if(result == calc.result) {
+        printf("Right answer!\n");
+        hit = 1;
+    } else {
+        printf("Miss!\n");
+    }
+    
+    printf("%d - %d = %d\n", calc.value1, calc.value2, calc.result);
+    return hit;
 }
 
 int mul(int result, calculate calc){
-    // let's implement
+    /int result = calc.value1 * calc.value2;
+    calc.result = result;
+    int hit = 0; // 0 == miss, 1 == hit, certo
+
+    if(result == calc.result) {
+        printf("Right answer!\n");
+        hit = 1;
+    } else {
+        printf("Miss!\n");
+    }
+    
+    printf("%d x %d = %d\n", calc.value1, calc.value2, calc.result);
+    return hit;
 }
