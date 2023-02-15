@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 typedef struct {
     int difficulty;
@@ -11,6 +12,9 @@ typedef struct {
 
 void start(); // jogar
 void showInfo(calculate calc); // mostrar info
+int add(int result, calculate calc);
+int sub(int result, calculate calc);
+int mul(int result, calculate calc);
 
 int points = 0; // Placar
 
@@ -89,7 +93,7 @@ void start() {
         }
     } // Unknown
     else {
-        printf("Unknown operation!\n", calc.operation);
+        printf("Unknown operation!\n");
     }
 
     // Play again?
@@ -101,7 +105,7 @@ void start() {
         start();
     } else {
         printf("You have finished your game with %d points\n", points);
-        exit();
+        exit(1);
     }
 }
 
@@ -122,7 +126,7 @@ void showInfo(calculate calc){
 }
 
 int add(int result, calculate calc){
-    int result = calc.value1 + calc.value2;
+    result = calc.value1 + calc.value2;
     calc.result = result;
     int hit = 0; // 0 == miss, 1 == hit, certo
 
@@ -138,7 +142,7 @@ int add(int result, calculate calc){
 }
 
 int sub(int result, calculate calc){
-    int result = calc.value1 - calc.value2;
+    result = calc.value1 - calc.value2;
     calc.result = result;
     int hit = 0; // 0 == miss, 1 == hit, certo
 
@@ -154,7 +158,7 @@ int sub(int result, calculate calc){
 }
 
 int mul(int result, calculate calc){
-    int result = calc.value1 * calc.value2;
+    result = calc.value1 * calc.value2;
     calc.result = result;
     int hit = 0; // 0 == miss, 1 == hit, certo
 
